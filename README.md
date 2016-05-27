@@ -76,9 +76,7 @@ ___
 
 This generator was built alongside the blog post [React Tutorial: Cloning Yelp](https://www.fullstackreact.com/articles/react-tutorial-cloning-yelp/).
 
-This repo was written and is maintained by the [Fullstack React](https://fullstackreact.com) team. In the book we cover many more projects like this. We walk through each line of code, explain why it's there and how it works.
-
-This app is only one of several apps we have in the book. If you're looking to learn React, there's no faster way than by spending a few hours with the Fullstack React book.
+This repo was written and is maintained by the [Fullstack React](https://fullstackreact.com) team. In the book, we cover many more projects like this. We walk through each line of code, explain why it's there and how it works.
 
 <div style="clear:both"></div>
 
