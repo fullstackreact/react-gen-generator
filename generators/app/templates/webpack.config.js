@@ -48,7 +48,8 @@ const defines =
     memo[`__${key.toUpperCase()}__`] = val;
     return memo;
   }, {
-    __NODE_ENV__: JSON.stringify(NODE_ENV)
+    __NODE_ENV__: JSON.stringify(NODE_ENV),
+    __DEBUG__: isDev
   });
 
 config.plugins = [
