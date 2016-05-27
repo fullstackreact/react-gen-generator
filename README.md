@@ -71,7 +71,7 @@ ___
 # Fullstack React Book
 
 <a href="https://fullstackreact.com">
-<img align="right" src="resources/readme/fullstack-react-hero-book.png" alt="Fullstack React Book" width="155" height="250" />
+<img align="right" src="https://github.com/fullstackreact/google-maps-react/raw/master/resources/readme/fullstack-react-hero-book.png" alt="Fullstack React Book" width="155" height="250" />
 </a>
 
 This generator was built alongside the blog post [React Tutorial: Cloning Yelp](https://www.fullstackreact.com/articles/react-tutorial-cloning-yelp/).
