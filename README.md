@@ -1,5 +1,4 @@
-# generator-react-gen [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> Generate a react project in the fullstack way
+# Generate a starting point for your react app
 
 ## Installation
 
@@ -15,14 +14,6 @@ Then generate your new project:
 ```bash
 yo react-gen
 ```
-
-## Getting To Know Yeoman
-
- * Yeoman has a heart of gold.
- * Yeoman is a person with feelings and opinions, but is very easy to work with.
- * Yeoman can be too opinionated at times but is easily convinced not to be.
- * Feel free to [learn more about Yeoman](http://yeoman.io/).
-
 ## License
 
 MIT © [Ari Lerner](http://fullstackreact.com)

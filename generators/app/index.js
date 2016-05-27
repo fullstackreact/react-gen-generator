@@ -35,17 +35,20 @@ module.exports = yeoman.Base.extend({
 
   writing: function () {
     // root files
-    ['package.json',
+    var files = ['package.json',
       'webpack.config.js',
       'karma.conf.js',
-      '.babelrc', '.env'
-    ].forEach(function (filename) {
+      '.babelrc', '.env',
+      'src/'
+    ];
+
+    files.forEach(function (filename) {
       this.fs.copyTpl(
         this.templatePath(filename),
         this.destinationPath(filename),
         this.props
       );
-    });
+    }.bind(this));
   },
 
   install: function () {
