@@ -6,11 +6,12 @@ import styles from './styles.module.css'
 
 export class Container extends React.Component {
   render() {
-    console.log('hi');
     return (
-      <div>
+      <div className={styles.wrapper}>
         <Header />
-        <h1>Hello world</h1>
+        <div className={styles.content}>
+          <h1>Hello <%= title %></h1>
+        </div>
       </div>
     )
   }

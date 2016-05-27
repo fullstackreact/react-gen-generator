@@ -14,6 +14,33 @@ Then generate your new project:
 ```bash
 yo react-gen
 ```
+
+## Workflow
+
+Open your app in a text editor and go!
+
+```bash
+npm run start
+```
+
+To run all the tests in your app:
+
+```bash
+npm run test
+```
+
+To run the tests and watch for any compilation changes:
+
+```bash
+npm run test:watch
+```
+
+To build your app for distribution:
+
+```bash
+npm run build
+```
+
 ## License
 
 MIT © [Ari Lerner](http://fullstackreact.com)
