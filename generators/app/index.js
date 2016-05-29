@@ -2,6 +2,22 @@
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
+var glob = require('glob');
+
+const tplCopy = function (name, to, props) {
+  this.fs.copyTpl(
+    this.templatePath(name),
+    this.destinationPath(to || name),
+    (props || this.props)
+  );
+};
+
+const fileListCopy = function (files, dest) {
+  const cpy = tplCopy.bind(this);
+  files.forEach(filename => {
+    cpy(filename, dest, this.props);
+  });
+};
 
 module.exports = yeoman.Base.extend({
   prompting: function () {
@@ -27,7 +43,8 @@ module.exports = yeoman.Base.extend({
       default: 'ari@fullstack.io'
     }];
 
-    return this.prompt(prompts).then(function (props) {
+    return this.prompt(prompts)
+    .then(function (props) {
       // To access props later use this.props.someAnswer;
       this.props = props;
     }.bind(this));
@@ -35,20 +52,31 @@ module.exports = yeoman.Base.extend({
 
   writing: function () {
     // root files
-    var files = ['package.json',
+    var copyFiles = fileListCopy.bind(this);
+    var baseFiles = ['package.json',
       'webpack.config.js',
       'karma.conf.js',
       '.babelrc', '.env',
       'src/'
     ];
 
-    files.forEach(function (filename) {
-      this.fs.copyTpl(
-        this.templatePath(filename),
-        this.destinationPath(filename),
-        this.props
-      );
-    }.bind(this));
+    var featureFiles = {
+      redux: {
+        'features/redux/': 'src/'
+      }
+    };
+
+    copyFiles(baseFiles);
+
+    Object.keys(featureFiles)
+      .forEach(function (feature) {
+        Object.keys(featureFiles[feature])
+        .forEach(key => {
+          const dest = featureFiles[feature][key];
+          let files = glob.sync(key);
+          copyFiles(files, dest);
+        });
+      });
   },
 
   install: function () {

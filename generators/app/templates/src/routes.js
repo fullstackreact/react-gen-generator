@@ -1,10 +1,10 @@
 import React from 'react'
-import {browserHistory, Router, Route, Redirect} from 'react-router'
+import {Route} from 'react-router'
 
 import makeMainRoutes from 'views/main/routes';
 
-export const makeRoutes = () => {
-  const mainRoutes = makeMainRoutes();
+export const makeRoutes = (store) => {
+  const mainRoutes = makeMainRoutes(store);
 
   return (
     <Route path=''>

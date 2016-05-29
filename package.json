@@ -21,8 +21,14 @@
     "yeoman-generator"
   ],
   "dependencies": {
-    "yeoman-generator": "^0.23.0",
     "chalk": "^1.0.0",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-router-redux": "^4.0.4",
+    "redux": "^3.5.2",
+    "redux-module-builder": "0.0.5",
+    "redux-thunk": "^2.1.0",
+    "yeoman-generator": "^0.23.0",
     "yosay": "^1.0.0"
   },
   "devDependencies": {
