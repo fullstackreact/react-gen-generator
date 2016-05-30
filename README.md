@@ -66,6 +66,8 @@ Wanna add redux to the mix? No problem, pass the feature flag of `--redux` when 
 yo react-gen --redux
 ```
 
+The `--redux` flag will also install the [redux-devtools](https://github.com/gaearon/redux-devtools), hidden by default. Pressing the combination of `Ctrl+h` will make them visible.
+
 ## Contributing
 
 ```shell
