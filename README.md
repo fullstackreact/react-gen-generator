@@ -58,6 +58,14 @@ To build the app for distribution, we can use the `npm run build` command:
 npm run build
 ```
 
+## Features
+
+Wanna add redux to the mix? No problem, pass the feature flag of `--redux` when calling generate, i.e.:
+
+```bash
+yo react-gen --redux
+```
+
 ## Contributing
 
 ```shell
