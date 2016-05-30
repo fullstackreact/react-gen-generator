@@ -14,7 +14,6 @@ import {configureStore} from './redux/configureStore'
 const {store, actions, history} = configureStore({initialState, historyType: hashHistory});
 
 let render = (routerKey = null) => {
-  console.log('routerKey', routerKey);
   const makeRoutes = require('./routes').default;
   const routes = makeRoutes(store)
 

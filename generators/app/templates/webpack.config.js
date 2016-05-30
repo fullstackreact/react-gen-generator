@@ -108,8 +108,6 @@ config.resolve.alias = {
 };
 // end Roots
 
-// console.log(require('prettyjson').render(config));
-
 // Testing
 if (isTest) {
   config.externals = {

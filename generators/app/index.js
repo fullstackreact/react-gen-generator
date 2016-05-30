@@ -2,7 +2,6 @@
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
-var glob = require('glob');
 
 const tplCopy = function (name, to, props) {
   this.fs.copyTpl(
@@ -18,6 +17,10 @@ const fileListCopy = function (files, dest) {
     cpy(filename, dest, this.props);
   });
 };
+
+const availableFeatures = [
+  'redux'
+];
 
 module.exports = yeoman.Base.extend({
   prompting: function () {
@@ -43,10 +46,20 @@ module.exports = yeoman.Base.extend({
       default: 'ari@fullstack.io'
     }];
 
+    // feature options
+    availableFeatures.forEach(feature => this.option(feature));
+
     return this.prompt(prompts)
     .then(function (props) {
       // To access props later use this.props.someAnswer;
       this.props = props;
+
+      this.features = [];
+      availableFeatures.forEach(feature => {
+        if (this.options[feature]) {
+          this.features.push(feature);
+        }
+      });
     }.bind(this));
   },
 
@@ -59,24 +72,88 @@ module.exports = yeoman.Base.extend({
       '.babelrc', '.env',
       'src/'
     ];
+    var dependencies = [
+      'react', 'react-dom', 'classnames', 'font-awesome',
+      'react-router'
+    ];
+    var devDependencies = [
+      'autoprefixer',
+      'babel-core',
+      'babel-loader',
+      'babel-plugin-transform-es2015-modules-umd',
+      'babel-polyfill',
+      'babel-preset-es2015',
+      'babel-preset-react',
+      'babel-preset-react-hmre',
+      'babel-preset-stage-0',
+      'babel-register',
+      'chai',
+      'chai-enzyme',
+      'css-loader',
+      'cssnano',
+      'dotenv',
+      'enzyme',
+      'expect',
+      'file-loader',
+      'hjs-webpack',
+      'jasmine-core',
+      'json-loader',
+      'karma',
+      'karma-chai',
+      'karma-jasmine',
+      'karma-mocha',
+      'karma-phantomjs-launcher',
+      'karma-sourcemap-loader',
+      'karma-spec-reporter',
+      'karma-webpack',
+      'mocha',
+      'phantomjs-polyfill',
+      'phantomjs-prebuilt',
+      'postcss-loader',
+      'precss',
+      'react-addons-test-utils',
+      'sinon',
+      'style-loader',
+      'url-loader',
+      'webpack'
+    ];
 
     var featureFiles = {
       redux: {
-        'features/redux/': 'src/'
+        'src/': {
+          dependencies: ['react-redux',
+            'redux-module-builder', 'redux-thunk'],
+          devDependencies: ['redux-devtools',
+          'redux-devtools-log-monitor', 'redux-devtools-dock-monitor'],
+          files: ['features/redux/']
+        }
       }
     };
 
     copyFiles(baseFiles);
 
-    Object.keys(featureFiles)
-      .forEach(function (feature) {
-        Object.keys(featureFiles[feature])
-        .forEach(key => {
-          const dest = featureFiles[feature][key];
-          let files = glob.sync(key);
-          copyFiles(files, dest);
-        });
+    this.features.forEach(featureKey => {
+      this.log(`======> Enabling ` + chalk.blue(featureKey));
+      const feat = featureFiles[featureKey];
+      Object.keys(feat)
+      .forEach(key => {
+        const dest = key;
+        const feature = feat[key];
+        const files = feature.files;
+        copyFiles(files, dest);
+
+        if (feature.dependencies) {
+          dependencies = dependencies.concat(feature.dependencies);
+        }
+        if (feature.devDependencies) {
+          devDependencies =
+            devDependencies.concat(feature.devDependencies);
+        }
       });
+    });
+
+    this.npmInstall(dependencies, {save: true});
+    this.npmInstall(devDependencies, {saveDev: true});
   },
 
   install: function () {

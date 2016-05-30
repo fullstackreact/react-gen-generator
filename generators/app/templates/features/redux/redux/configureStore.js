@@ -11,9 +11,9 @@ export const configureStore = ({
 
     let middleware = [
       createApiMiddleware({
-        baseUrl: 'http://fullstackreact.com',
+        baseUrl: 'https://api.<%= title %>.com',
         headers: {
-          'X-Requested-By': 'callerID'
+          'X-Requested-By': '<%= title %> client'
         }
       }),
       thunkMiddleware,
@@ -22,7 +22,7 @@ export const configureStore = ({
 
     let tools = [];
     if (__DEBUG__) {
-      const DevTools = require('containers/DevTools').default;
+      const DevTools = require('containers/DevTools/DevTools').default;
       let devTools = window.devToolsExtension ? window.devToolsExtension : DevTools.instrument;
       if (typeof devTools === 'function') {
         tools.push(devTools())
