@@ -74,7 +74,7 @@ module.exports = yeoman.Base.extend({
     ];
     var dependencies = [
       'react', 'react-dom', 'classnames', 'font-awesome',
-      'react-router'
+      'react-router', 'react-router-redux'
     ];
     var devDependencies = [
       'autoprefixer',
