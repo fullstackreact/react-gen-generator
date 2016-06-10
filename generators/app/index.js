@@ -89,6 +89,7 @@ module.exports = yeoman.Base.extend({
       'babel-register',
       'chai',
       'chai-enzyme',
+      'cross-env',
       'css-loader',
       'cssnano',
       'dotenv',
