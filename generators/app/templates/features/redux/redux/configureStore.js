@@ -1,5 +1,6 @@
 import { browserHistory } from 'react-router';
-import { createApiMiddleware, bindActionCreatorsToStore } from 'redux-module-builder';
+import { bindActionCreatorsToStore } from 'redux-module-builder';
+import { createApiMiddleware } from 'redux-module-builder/api';
 import { routerMiddleware, syncHistoryWithStore } from 'react-router-redux';
 import thunkMiddleware from 'redux-thunk';
 import { createStore, compose, applyMiddleware } from 'redux';
