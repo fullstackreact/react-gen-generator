@@ -1,1 +1,2 @@
 APP_NAME=<%= title %>
+ROOT_URL='https://api.<%= title %>.com'

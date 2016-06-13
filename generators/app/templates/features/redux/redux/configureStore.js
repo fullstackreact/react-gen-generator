@@ -12,7 +12,7 @@ export const configureStore = ({
 
     let middleware = [
       createApiMiddleware({
-        baseUrl: 'https://api.<%= title %>.com',
+        baseUrl: __ROOT_URL__,
         headers: {
           'X-Requested-By': '<%= title %> client'
         }
