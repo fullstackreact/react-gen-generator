@@ -132,6 +132,8 @@ module.exports = yeoman.Base.extend({
     };
 
     copyFiles(baseFiles);
+    const cp = tplCopy.bind(this);
+    cp("env", ".env", this.props);
 
     this.features.forEach(featureKey => {
       this.log(`======> Enabling ` + chalk.blue(featureKey));
