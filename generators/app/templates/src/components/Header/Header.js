@@ -23,7 +23,7 @@ Header.propTypes = {
 }
 
 Header.defaultProps = {
-  title: 'Change me'
+  title: '<%= title %>'
 }
 
 export default Header
