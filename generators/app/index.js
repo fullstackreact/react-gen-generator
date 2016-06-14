@@ -71,7 +71,8 @@ module.exports = yeoman.Base.extend({
       'webpack.config.js',
       'karma.conf.js',
       '.babelrc',
-      'src/'
+      'src/',
+      'config/'
     ];
     var dependencies = [
       'react', 'react-dom', 'classnames', 'font-awesome',
