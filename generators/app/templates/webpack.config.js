@@ -83,7 +83,7 @@ cssloader.loader = newloader.loader;
 
 config.module.loaders.push({
   test: /\.css$/,
-  include: [modules, css],
+  include: [modules],
   loader: 'style!css'
 });
 
