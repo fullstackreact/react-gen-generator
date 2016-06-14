@@ -67,6 +67,7 @@ module.exports = yeoman.Base.extend({
     // root files
     var copyFiles = fileListCopy.bind(this);
     var baseFiles = ['package.json',
+      'tests.webpack.js',
       'webpack.config.js',
       'karma.conf.js',
       '.babelrc',
