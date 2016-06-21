@@ -12,6 +12,10 @@ const getConfig = require('hjs-webpack');
 const isDev = NODE_ENV === 'development';
 const isTest = NODE_ENV === 'test';
 
+// devServer config
+const devHost   = process.env.HOST || 'localhost';
+const devPort   = process.env.PORT || 3000;
+
 const root = resolve(__dirname);
 const src = join(root, 'src');
 const modules = join(root, 'node_modules');
@@ -26,7 +30,7 @@ var config = getConfig({
     return {
       'index.html': context.defaultTemplate({
         title: '<%= title %>',
-        publicPath: isDev ? 'http://localhost:3000/' : '',
+        publicPath: isDev ? `//${devHost}:${devPort}/` : '',
         meta: {}
       })
     };
@@ -108,6 +112,12 @@ config.resolve.alias = {
   styles: join(src, 'styles')
 };
 // end Roots
+
+// Dev
+if (isDev) {
+  config.devServer.port = devPort;
+  config.devServer.hostname = devHost;
+}
 
 // Testing
 if (isTest) {
