@@ -4,11 +4,11 @@ import { createApiMiddleware } from 'redux-module-builder/api';
 import { routerMiddleware, syncHistoryWithStore } from 'react-router-redux';
 import thunkMiddleware from 'redux-thunk';
 import { createStore, compose, applyMiddleware } from 'redux';
-import { rootReducer, actions } from './rootReducer';
+import { rootReducer, actions, initialState } from './rootReducer';
 
 export const configureStore = ({
   historyType = browserHistory,
-  initialState = {}}) => {
+  userInitialState = {}}) => {
 
     let middleware = [
       createApiMiddleware({
@@ -38,7 +38,7 @@ export const configureStore = ({
 
     const store = finalCreateStore(
       rootReducer,
-      initialState
+      Object.assign({}, initialState, userInitialState)
     );
 
     const history = syncHistoryWithStore(historyType, store, {
