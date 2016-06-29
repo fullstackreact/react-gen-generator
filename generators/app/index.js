@@ -71,7 +71,6 @@ module.exports = yeoman.Base.extend({
       'webpack.config.js',
       'karma.conf.js',
       '.babelrc',
-      '.gitignore',
       'src/',
       'config/'
     ];
