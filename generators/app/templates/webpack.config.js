@@ -16,6 +16,9 @@ const isTest = NODE_ENV === 'test';
 const devHost   = process.env.HOST || 'localhost';
 const devPort   = process.env.PORT || 3000;
 
+const setPublicPath = process.env.SET_PUBLIC_PATH !== 'false';
+const publicPath  = (isDev && setPublicPath) ? `//${devHost}:${devPort}/` : '';
+
 const root = resolve(__dirname);
 const src = join(root, 'src');
 const modules = join(root, 'node_modules');
@@ -30,7 +33,7 @@ var config = getConfig({
     return {
       'index.html': context.defaultTemplate({
         title: '<%= title %>',
-        publicPath: isDev ? `//${devHost}:${devPort}/` : '',
+        publicPath,
         meta: {}
       })
     };
