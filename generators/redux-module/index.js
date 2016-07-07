@@ -3,8 +3,6 @@ var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
 
-var optionOrPrompt = require('yeoman-option-or-prompt');
-
 var fs = require('fs');
 var path = require('path');
 var process = require('process')
@@ -119,8 +117,6 @@ Make sure you import this module into your root reducer.`);
 }
 
 module.exports = yeoman.Base.extend({
-  _optionOrPrompt: optionOrPrompt,
-
   prompting: function () {
     this.log('Create a redux module');
     const done = this.async();
@@ -132,8 +128,10 @@ module.exports = yeoman.Base.extend({
       default: this.appname
     }];
 
-    return this._optionOrPrompt(prompts, function (props) {
+    return this.prompt(prompts)
+    .then(function (props) {
       this.props = props;
+
       done();
     }.bind(this));
   },
@@ -150,7 +148,6 @@ module.exports = yeoman.Base.extend({
     ];
 
     updateRootReducer.call(this, this.props);
-
     this.npmInstall(dependencies, {save: true});
   },
 
