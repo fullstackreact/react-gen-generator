@@ -3,6 +3,8 @@ var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
 
+var optionOrPrompt = require('yeoman-option-or-prompt');
+
 const tplCopy = function (name, to, props) {
   this.fs.copyTpl(
     this.templatePath(name),
@@ -23,10 +25,12 @@ const availableFeatures = [
 ];
 
 module.exports = yeoman.Base.extend({
+  _optionOrPrompt: optionOrPrompt,
+
   prompting: function () {
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the gnarly ' + chalk.red('generator-react-gen') + ' generator!'
+      'Welcome to the ' + chalk.red('generator-react-gen') + ' generator!'
     ));
 
     var prompts = [{
@@ -60,6 +64,7 @@ module.exports = yeoman.Base.extend({
           this.features.push(feature);
         }
       });
+
     }.bind(this));
   },
 
@@ -71,7 +76,6 @@ module.exports = yeoman.Base.extend({
       'webpack.config.js',
       'karma.conf.js',
       '.babelrc',
-      '.gitignore',
       'src/',
       'config/'
     ];
