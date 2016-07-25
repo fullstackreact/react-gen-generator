@@ -119,7 +119,8 @@ module.exports = yeoman.Base.extend({
       'sinon',
       'style-loader',
       'url-loader',
-      'webpack'
+      'webpack',
+      'yargs'
     ];
 
     var featureFiles = {
