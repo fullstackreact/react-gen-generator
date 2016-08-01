@@ -15,7 +15,7 @@ export class Container extends React.Component {
   render() {
     return (
       <div className={styles.wrapper}>
-        <Header tite="play" />
+        <Header title="play" />
         <div className={styles.content}>
           {this.renderChildren()}
         </div>
